@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Sky gradient -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a4855;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#68a0b0;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Mountain gradients -->
+    <linearGradient id="mountainGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d5a4d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e3d33;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#367055;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#245139;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a8c6f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d5a4d;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Mist gradient -->
+    <linearGradient id="mistGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:white;stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- Cloud filter -->
+    <filter id="cloudBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#skyGradient)" />
+  
+  <!-- Sun with animation -->
+  <circle cx="650" cy="80" r="40" fill="#ffd700" opacity="0.9">
+    <animate attributeName="opacity" values="0.7;0.9;0.7" dur="4s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Background mountains -->
+  <path d="M0,400 L200,180 L400,300 L600,150 L800,250 L800,400 Z" fill="url(#mountainGradient1)" />
+  
+  <!-- Middle mountains -->
+  <path d="M0,400 L150,200 L300,320 L500,180 L700,280 L800,220 L800,400 Z" fill="url(#mountainGradient2)" />
+  
+  <!-- Foreground mountains -->
+  <path d="M0,400 L100,250 L250,350 L400,220 L600,330 L800,280 L800,400 Z" fill="url(#mountainGradient3)" />
+  
+  <!-- Trees on mountains -->
+  <g id="trees">
+    <!-- Multiple small triangular trees -->
+    <g transform="translate(120,280)">
+      <path d="M0,0 L5,-15 L10,0 Z" fill="#1a4d33" />
+    </g>
+    <g transform="translate(140,290)">
+      <path d="M0,0 L6,-18 L12,0 Z" fill="#1a4d33" />
+    </g>
+    <g transform="translate(350,260)">
+      <path d="M0,0 L8,-24 L16,0 Z" fill="#1a4d33" />
+    </g>
+    <!-- Add more trees as needed -->
+  </g>
+  
+  <!-- Floating mist/clouds -->
+  <g filter="url(#cloudBlur)">
+    <path d="M100,200 Q150,180 200,200 T300,190 T400,200" 
+          fill="none" stroke="white" stroke-width="20" opacity="0.3">
+      <animate attributeName="d" 
+               values="M100,200 Q150,180 200,200 T300,190 T400,200;
+                       M100,205 Q150,185 200,205 T300,195 T400,205;
+                       M100,200 Q150,180 200,200 T300,190 T400,200"
+               dur="10s" repeatCount="indefinite" />
+    </path>
+    <path d="M500,150 Q550,130 600,150 T700,140" 
+          fill="none" stroke="white" stroke-width="15" opacity="0.2">
+      <animate attributeName="d" 
+               values="M500,150 Q550,130 600,150 T700,140;
+                       M500,155 Q550,135 600,155 T700,145;
+                       M500,150 Q550,130 600,150 T700,140"
+               dur="8s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Birds -->
+  <g>
+    <path d="M600,100 q5,-5 10,0 q5,5 10,0" fill="none" stroke="#333" stroke-width="2">
+      <animate attributeName="d" 
+               values="M600,100 q5,-5 10,0 q5,5 10,0;
+                       M600,98 q5,-3 10,0 q5,3 10,0;
+                       M600,100 q5,-5 10,0 q5,5 10,0"
+               dur="2s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform"
+                        type="translate"
+                        from="-50,0" to="850,0"
+                        dur="15s" repeatCount="indefinite" />
+    </path>
+    <path d="M580,120 q5,-5 10,0 q5,5 10,0" fill="none" stroke="#333" stroke-width="2">
+      <animate attributeName="d" 
+               values="M580,120 q5,-5 10,0 q5,5 10,0;
+                       M580,118 q5,-3 10,0 q5,3 10,0;
+                       M580,120 q5,-5 10,0 q5,5 10,0"
+               dur="2s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform"
+                        type="translate"
+                        from="-50,0" to="850,0"
+                        dur="20s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <!-- Foreground mist -->
+  <rect x="0" y="300" width="800" height="100" fill="url(#mistGradient)">
+    <animate attributeName="opacity" values="0.3;0.5;0.3" dur="5s" repeatCount="indefinite" />
+  </rect>
+</svg>
